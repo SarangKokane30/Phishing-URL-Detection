@@ -1,5 +1,8 @@
-#importing required libraries
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+#importing required libraries
 from flask import Flask, request, render_template
 import numpy as np
 import pandas as pd
@@ -14,7 +17,7 @@ gbc = pickle.load(file)
 file.close()
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
